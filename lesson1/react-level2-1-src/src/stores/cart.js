@@ -11,7 +11,7 @@ class Cart{
       getCnt: false,
       inProccess: false
     });
-    
+
     this.root = rootStore;
     this.cartApi = cartApi;
   }

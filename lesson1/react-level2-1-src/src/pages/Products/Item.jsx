@@ -1,12 +1,13 @@
 import ProductControls from "@/components/Products/Controls";
 import AsyncHelper from "@/components/Shared/AsyncHelper";
-import useFetch from "@/hooks/useFetch";
 import { Link, useParams } from "react-router"
+import useAsyncFn from "@/hooks/useAsyncFn.js";
+import { api } from "@/api/client";
 
 
 export default function ProductsItemPage() {
   const { id } = useParams();
-  const request = useFetch(`https://faceprog.ru/reactcourseapi/products/index.php?delay&id=${id}`);
+  const request = useAsyncFn(api.products.get, id);
 
   return <AsyncHelper fetchResult={request} render={product => <div>
     <Link to="/products">К списку продуктов</Link>
